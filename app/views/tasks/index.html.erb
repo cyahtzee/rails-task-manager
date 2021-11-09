@@ -3,12 +3,15 @@
 <% @tasks.each do |task| %>
   <% if %>
     <% task.completed %>
-    <li><i class="far fa-check-circle"></i><%= link_to "#{task.title}", task_path(task) %></li>
+    <li><i class="far fa-check-circle"></i><%= link_to "#{task.title}", task_path(task) %><%= link_to task_path(task), data: { confirm: 'Delete?'}, method: :delete do %>
+<i class="fas fa-recycle"></i>
+<% end %></li>
     <% else %>
-    <li><i class="far fa-circle"></i><%= link_to "#{task.title}", task_path(task) %></li>
+    <li><i class="far fa-circle"></i><%= link_to "#{task.title}", task_path(task) %><%= link_to task_path(task), data: { confirm: 'Delete?'}, method: :delete do %>
+<i class="fas fa-recycle"></i>
+<% end %></li>
   <% end %>
 <% end %>
 </ul>
 <i class="fas fa-plus"></i><%= link_to 'new task', new_task_path %>
-
 </div>

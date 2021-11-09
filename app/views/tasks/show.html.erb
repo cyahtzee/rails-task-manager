@@ -1,17 +1,21 @@
-<%= @task.title %>
-<%= @task.details %>
-<% if %>
-    <% @task.completed %>
-    <div><i class="far fa-check-circle"></i><%= @task.title %></div>
-    <% else %>
-    <div><i class="far fa-circle"></i><%= @task.title %></div>
-  <% end %>
-<%= link_to edit_task_path(@task) do %>
-<i class="fas fa-pen-alt"></i>
-<% end %>
-<%= link_to tasks_path do %>
-<i class="fas fa-igloo"></i>
-<% end %>
-<%= link_to delete_task_path(@task), data: { confirm: 'Delete?'}, method: :delete do %>
-<i class="fas fa-recycle"></i>
-<% end %>
+<div class="container">
+  <h1><%= @task.title %></h1>
+  <p>TO DO: <%= @task.details %></p><hr>
+  <% if %>
+      <% @task.completed %>
+      <div><i class="far fa-check-circle"></i> Uncompleted</div><hr>
+      <% else %>
+      <div><i class="far fa-circle"></i> Completed</div><hr>
+    <% end %>
+  <div class="d-flex col-2 justify-content-between align-items-flex-start">
+    <%= link_to edit_task_path(@task) do %>
+    <i class="fas fa-pen-alt"></i>
+    <% end %>
+    <%= link_to tasks_path do %>
+    <i class="fas fa-igloo"></i>
+    <% end %>
+    <%= link_to task_path(@task), data: { confirm: 'Delete?'}, method: :delete do %>
+    <i class="fas fa-recycle"></i>
+    <% end %>
+  </div>
+</div>
