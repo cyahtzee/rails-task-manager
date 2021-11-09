@@ -1,0 +1,17 @@
+<%= @task.title %>
+<%= @task.details %>
+<% if %>
+    <% @task.completed %>
+    <div><i class="far fa-check-circle"></i><%= @task.title %></div>
+    <% else %>
+    <div><i class="far fa-circle"></i><%= @task.title %></div>
+  <% end %>
+<%= link_to edit_task_path(@task) do %>
+<i class="fas fa-pen-alt"></i>
+<% end %>
+<%= link_to tasks_path do %>
+<i class="fas fa-igloo"></i>
+<% end %>
+<%= link_to delete_task_path(@task), data: { confirm: 'Delete?'}, method: :delete do %>
+<i class="fas fa-recycle"></i>
+<% end %>
